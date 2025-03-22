@@ -1,0 +1,42 @@
+<div class="form-check form-switch">
+  <input
+    class="form-check-input"
+    type="checkbox"
+    (change)="showLogin($event)"
+    checked
+  />
+  <label class="form-check-label" for="flexSwitchCheckChecked"
+    >Show login</label
+  >
+</div>
+@if (this.show) {
+  <form>
+    <div class="mb-3">
+      <label class="form-label">Email address</label>
+      <input type="email" class="form-control" #inputMail />
+      <div class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" #inputPassword />
+    </div>
+    <button
+      type="button"
+      (click)="checkBeforeSend(inputMail.value, inputPassword.value)"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
+    @if (!checkMail) {
+      <br /><br />
+      <span>El mail necesita incluir un &#64;</span>
+    }
+
+    @if (!checkPassword) {
+      <br />
+      <span>La contraseña debe tener más de 5 caracteres</span>
+    }
+  </form>
+}
