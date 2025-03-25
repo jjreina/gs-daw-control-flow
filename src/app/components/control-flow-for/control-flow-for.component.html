@@ -1,0 +1,5 @@
+@for (product of this.products; track $index; let e = $even) {
+  @if (e) {
+    <p>{{ product }}</p>
+  }
+}
